@@ -5,7 +5,6 @@ const SUPABASE_KEY =
 const client = supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
 
 export function getUser() {
-    console.log('client', client.auth.session());
     return client.auth.session() && client.auth.session().user;
 }
 
@@ -41,16 +40,16 @@ export async function logout() {
     return (window.location.href = '/');
 }
 
-export async function fetchPosts() {
-    const response = await client.from('demo_posts').select('*');
-    return response.data;
-}
+// export async function fetchPosts() {
+//     const response = await client.from('demo_posts').select('*');
+//     return response.data;
+// }
 
-export async function createNewPost(post) {
-    const response = await client.from('demo_posts').insert(post);
-    if (response.data) {
-        return response.data;
-    } else {
-        console.error(response.error);
-    }
-}
+// export async function createNewPost(post) {
+//     const response = await client.from('demo_posts').insert(post);
+//     if (response.data) {
+//         return response.data;
+//     } else {
+//         console.error(response.error);
+//     }
+// }
